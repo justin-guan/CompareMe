@@ -8,6 +8,9 @@ import javafx.stage.DirectoryChooser;
 import java.io.File;
 
 public class CompareMeController {
+    /*
+    TODO: Change Label to an uneditable textbox
+     */
     public Button selectDir1;
     public Button selectDir2;
     public Label directory1;
