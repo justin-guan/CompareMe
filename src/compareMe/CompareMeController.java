@@ -26,4 +26,8 @@ public class CompareMeController {
         File selected = directoryChooser.showDialog(selectDir1.getScene().getWindow());
         return (selected != null) ? selected.getAbsolutePath() : null;
     }
+
+    public void beginCompare(ActionEvent actionEvent) {
+
+    }
 }

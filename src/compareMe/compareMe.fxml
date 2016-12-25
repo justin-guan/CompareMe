@@ -9,8 +9,9 @@
 <GridPane alignment="center" hgap="10" stylesheets="/compareMe/style.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="compareMe.CompareMeController">
     <Button fx:id="selectDir1" mnemonicParsing="false" onAction="#selectDirectory1" text="Choose a Directory" GridPane.rowIndex="0" />
     <Button fx:id="selectDir2" mnemonicParsing="false" onAction="#selectDirectory2" text="Choose a Directory" GridPane.rowIndex="1" />
-   <TextField fx:id="directory1" GridPane.columnIndex="1" GridPane.rowIndex="0" editable="false"/>
-   <TextField fx:id="directory2" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false"/>
+   <TextField fx:id="directory1" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+   <TextField fx:id="directory2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   <Button mnemonicParsing="false" text="Start Comparing!" onAction="#beginCompare" GridPane.rowIndex="2" />
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
@@ -18,5 +19,6 @@
     <rowConstraints>
         <RowConstraints />
         <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
     </rowConstraints>
 </GridPane>
