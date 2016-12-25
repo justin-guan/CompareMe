@@ -38,8 +38,8 @@ public class HashGenerator {
 
     private static String toHexString(byte[] array) {
         StringBuilder s = new StringBuilder();
-        for(int i = 0; i < array.length; i++) {
-            s.append(Integer.toHexString(0xFF & array[i]));
+        for (byte b : array) {
+            s.append(Integer.toHexString(0xFF & b));
         }
         return s.toString();
     }
