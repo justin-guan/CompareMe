@@ -30,7 +30,7 @@ public class CompareMeController {
 
     public void beginCompare(ActionEvent actionEvent) {
         try {
-            Compare.compare(directory1.getText(), directory2.getText(), "SHA-256");
+            Compare.compare(directory1.getText(), "SHA-256");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
