@@ -7,6 +7,7 @@ import javafx.stage.DirectoryChooser;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 public class CompareMeController {
     public Button selectDir1;
@@ -30,7 +31,10 @@ public class CompareMeController {
 
     public void beginCompare(ActionEvent actionEvent) {
         try {
-            Compare.compare(directory1.getText(), "SHA-256");
+            Comparator comparator = new Comparator();
+            ArrayList<ArrayList<File>> duplicates = comparator.compare(directory1.getText(), "SHA-256");
+            System.out.println(duplicates);
+            System.out.println("done");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
