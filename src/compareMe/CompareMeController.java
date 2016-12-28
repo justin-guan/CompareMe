@@ -11,16 +11,10 @@ import java.util.ArrayList;
 
 public class CompareMeController {
     public Button selectDir1;
-    public Button selectDir2;
     public TextField directory1;
-    public TextField directory2;
 
     public void selectDirectory1(ActionEvent actionEvent) {
         directory1.setText(this.selectDirectory());
-    }
-
-    public void selectDirectory2(ActionEvent actionEvent) {
-        directory2.setText(this.selectDirectory());
     }
 
     private String selectDirectory() {
