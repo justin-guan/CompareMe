@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 
 public class CompareMeController {
     public Button selectDir1;
@@ -28,6 +29,10 @@ public class CompareMeController {
     }
 
     public void beginCompare(ActionEvent actionEvent) {
-
+        try {
+            Compare.compare(directory1.getText(), directory2.getText(), "SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 }
