@@ -59,9 +59,7 @@ public class CompareMeController {
 
             System.out.println(duplicates);
             System.out.println("done");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Something went wrong: " + e.toString());
-        } catch (IOException e) {
+        } catch (NoSuchAlgorithmException | IOException e) {
             throw new RuntimeException("Something went wrong: " + e.toString());
         }
     }
