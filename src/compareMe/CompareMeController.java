@@ -12,12 +12,14 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.nio.file.*;
 
 public class CompareMeController {
     public Button selectDir;
     public TextField directory;
     public CheckBox recursive;
     public CheckBox secondCheck;
+    public CheckBox autoDelete;
     public ToggleGroup hashFunction;
 
     public void selectDirectory1(ActionEvent actionEvent) {
@@ -36,18 +38,31 @@ public class CompareMeController {
             RadioButton hash = (RadioButton) hashFunction.getSelectedToggle();
             ArrayList<ArrayList<File>> duplicates = comparator.compare(directory.getText(), hash.getText(), recursive.isSelected());
 
-            Parent root = FXMLLoader.load(getClass().getResource("compareMeComplete.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Compare Me");
-            stage.setScene(new Scene(root, 300, 275));
-            stage.show();
+            if (autoDelete.isSelected() && duplicates.size() > 0) {
+                for (ArrayList<File> listOfFiles : duplicates) {
+                    boolean first = true;
+                    for (File f : listOfFiles) {
+                        if (first) {
+                            first = false;
+                            continue;
+                        }
+                        Files.delete(f.toPath()); // Use package java.nio.file to delete due to better error checking
+                    }
+                }
+            } else {
+                Parent root = FXMLLoader.load(getClass().getResource("compareMeComplete.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Compare Me");
+                stage.setScene(new Scene(root, 300, 275));
+                stage.show();
+            }
 
             System.out.println(duplicates);
             System.out.println("done");
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Something went wrong: " + e.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Something went wrong: " + e.toString());
         }
     }
 }
