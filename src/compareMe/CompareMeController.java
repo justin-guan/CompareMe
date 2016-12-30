@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class CompareMeController {
     public Button selectDir;
     public TextField directory;
+    public CheckBox recursive;
+    public CheckBox secondCheck;
 
     public void selectDirectory1(ActionEvent actionEvent) {
         directory.setText(this.selectDirectory());
