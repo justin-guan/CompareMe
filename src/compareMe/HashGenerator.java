@@ -30,6 +30,7 @@ public class HashGenerator {
             while ((length = file.read(block)) != -1) {
                 md.update(block, 0, length);
             }
+            file.close();
             return HashGenerator.toHexString(md.digest());
         } catch (IOException e) {
             return null;
@@ -38,8 +39,8 @@ public class HashGenerator {
 
     private static String toHexString(byte[] array) {
         StringBuilder s = new StringBuilder();
-        for(int i = 0; i < array.length; i++) {
-            s.append(Integer.toHexString(0xFF & array[i]));
+        for (byte b : array) {
+            s.append(Integer.toHexString(0xFF & b));
         }
         return s.toString();
     }
