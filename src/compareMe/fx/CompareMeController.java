@@ -1,5 +1,6 @@
-package compareMe;
+package compareMe.fx;
 
+import compareMe.Comparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -50,7 +51,7 @@ public class CompareMeController {
                     }
                 }
             } else if (duplicates.size() > 0) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/ManualDeleter.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ManualDeleter.fxml"));
                 Parent root = fxmlLoader.load();
                 ManualDeleterController controller = fxmlLoader.<ManualDeleterController>getController();
                 controller.initWindow(duplicates);
