@@ -50,10 +50,13 @@ public class CompareMeController {
                     }
                 }
             } else if (duplicates.size() > 0) {
-                Parent root = FXMLLoader.load(getClass().getResource("ManualDeleter.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/ManualDeleter.fxml"));
+                Parent root = fxmlLoader.load();
+                ManualDeleterController controller = fxmlLoader.<ManualDeleterController>getController();
+                controller.initWindow(duplicates);
                 Stage stage = new Stage();
-                stage.setTitle("Compare Me");
-                stage.setScene(new Scene(root, 300, 275));
+                stage.setTitle("Compare Me - Manual Deleter");
+                stage.setScene(new Scene(root));
                 stage.show();
             }
 
