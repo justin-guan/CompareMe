@@ -34,7 +34,7 @@
      </rowConstraints>
       <children>
          <CheckBox fx:id="recursive" mnemonicParsing="false" selected="true" text="Recursive" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-         <CheckBox fx:id="secondCheck" mnemonicParsing="false" text="Second Check" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+         <CheckBox fx:id="secondCheck" mnemonicParsing="false" selected="true" text="Second Check" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
          <CheckBox fx:id="autoDelete" mnemonicParsing="false" selected="true" text="Auto Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
       </children>
    </GridPane>
@@ -49,13 +49,13 @@
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-          <RadioButton mnemonicParsing="false" text="MD5" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER">
+          <RadioButton mnemonicParsing="false" text="MD5" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
             <toggleGroup>
                <ToggleGroup fx:id="hashFunction" />
             </toggleGroup></RadioButton>
-          <RadioButton mnemonicParsing="false" text="SHA-1" toggleGroup="$hashFunction" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
-          <RadioButton mnemonicParsing="false" selected="true" text="SHA-256" toggleGroup="$hashFunction" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
-          <RadioButton mnemonicParsing="false" text="SHA-512" toggleGroup="$hashFunction" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
+          <RadioButton mnemonicParsing="false" text="SHA-1" toggleGroup="$hashFunction" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+          <RadioButton mnemonicParsing="false" selected="true" text="SHA-256" toggleGroup="$hashFunction" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+          <RadioButton mnemonicParsing="false" text="SHA-512" toggleGroup="$hashFunction" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
       </children>
    </GridPane>
     <Button mnemonicParsing="false" onAction="#beginCompare" text="Start Comparing!" />
