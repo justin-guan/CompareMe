@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="center" spacing="10" stylesheets="/compareMe/style/style.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="compareMe.CompareMeController">
+<VBox alignment="center" spacing="10" stylesheets="/compareMe/style/style.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="compareMe.fx.CompareMeController">
     <GridPane alignment="center" hgap="10" vgap="10">
         <Button fx:id="selectDir" mnemonicParsing="false" onAction="#selectDirectory1" text="Choose a Directory" GridPane.columnIndex="0" />
         <TextField fx:id="directory" editable="false" GridPane.columnIndex="1" />

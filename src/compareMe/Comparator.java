@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Comparator {
     HashMap<String, ArrayList<String>> files;
 
-    Comparator() {
+    public Comparator() {
         files = new HashMap<String, ArrayList<String>>();
     }
 
