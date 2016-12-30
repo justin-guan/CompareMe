@@ -32,8 +32,8 @@
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <CheckBox fx:id="recursive" mnemonicParsing="false" selected="true" text="Recursive" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-         <CheckBox fx:id="secondCheck" mnemonicParsing="false" text="Second Check" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+         <CheckBox fx:id="recursive" GridPane.halignment="CENTER" mnemonicParsing="false" selected="true" text="Recursive" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+         <CheckBox fx:id="secondCheck" GridPane.halignment="CENTER" mnemonicParsing="false" text="Second Check" GridPane.columnIndex="1" GridPane.rowIndex="0" />
       </children>
    </GridPane>
    <GridPane alignment="center">
