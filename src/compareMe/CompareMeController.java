@@ -49,7 +49,7 @@ public class CompareMeController {
                         Files.delete(f.toPath()); // Use package java.nio.file to delete due to better error checking
                     }
                 }
-            } else {
+            } else if (duplicates.size() > 0) {
                 Parent root = FXMLLoader.load(getClass().getResource("compareMeComplete.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("Compare Me");
