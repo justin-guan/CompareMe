@@ -12,12 +12,12 @@ public class Comparator {
         files = new HashMap<String, ArrayList<String>>();
     }
 
-    public ArrayList<ArrayList<File>> compare(String dir, String algorithm) throws NoSuchAlgorithmException {
-        this.updateHashMap(dir, algorithm);
+    public ArrayList<ArrayList<File>> compare(String dir, String algorithm, boolean recursive) throws NoSuchAlgorithmException {
+        this.updateHashMap(dir, algorithm, recursive);
         return this.getCollisions(files);
     }
 
-    private void updateHashMap(String dir, String algorithm) throws NoSuchAlgorithmException {
+    private void updateHashMap(String dir, String algorithm, boolean recursive) throws NoSuchAlgorithmException {
         File directory = new File(dir);
         File[] directoryList = directory.listFiles();
         if (directoryList != null) {
@@ -31,8 +31,8 @@ public class Comparator {
                     } else { // Collision
                         files.get(hash).add(f.getAbsolutePath());
                     }
-                } else {
-                    this.updateHashMap(f.getAbsolutePath(), algorithm);
+                } else if (recursive){
+                    this.updateHashMap(f.getAbsolutePath(), algorithm, recursive);
                 }
             }
         }

@@ -34,7 +34,7 @@ public class CompareMeController {
     public void beginCompare(ActionEvent actionEvent) {
         try {
             Comparator comparator = new Comparator();
-            ArrayList<ArrayList<File>> duplicates = comparator.compare(directory.getText(), "SHA-256");
+            ArrayList<ArrayList<File>> duplicates = comparator.compare(directory.getText(), "SHA-256", recursive.isSelected());
 
             Parent root = FXMLLoader.load(getClass().getResource("compareMeComplete.fxml"));
             Stage stage = new Stage();
