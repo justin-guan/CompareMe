@@ -30,6 +30,7 @@ public class HashGenerator {
             while ((length = file.read(block)) != -1) {
                 md.update(block, 0, length);
             }
+            file.close();
             return HashGenerator.toHexString(md.digest());
         } catch (IOException e) {
             return null;
