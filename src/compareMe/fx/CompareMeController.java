@@ -50,6 +50,12 @@ public class CompareMeController {
                         Files.delete(f.toPath()); // Use package java.nio.file to delete due to better error checking
                     }
                 }
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Completed.fxml"));
+                Parent root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Compare Me - Completed");
+                stage.setScene(new Scene(root, 300, 100));
+                stage.show();
             } else if (duplicates.size() > 0) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ManualDeleter.fxml"));
                 Parent root = fxmlLoader.load();
@@ -59,10 +65,14 @@ public class CompareMeController {
                 stage.setTitle("Compare Me - Manual Deleter");
                 stage.setScene(new Scene(root));
                 stage.show();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Completed.fxml"));
+                Parent root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Compare Me - Completed");
+                stage.setScene(new Scene(root, 300, 100));
+                stage.show();
             }
-
-            System.out.println(duplicates);
-            System.out.println("done");
         } catch (NoSuchAlgorithmException | IOException e) {
             throw new RuntimeException("Something went wrong: " + e.toString());
         }

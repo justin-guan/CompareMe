@@ -8,6 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -127,6 +130,18 @@ public class ManualDeleterController {
     private void close() {
         Stage stage = (Stage) cancelAll.getScene().getWindow();
         stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Completed.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Something went wrong: " + e.toString());
+        }
+        Stage completed = new Stage();
+        completed.setTitle("Compare Me - Completed");
+        completed.setScene(new Scene(root, 300, 200));
+        completed.show();
     }
 
     public static class Path {
