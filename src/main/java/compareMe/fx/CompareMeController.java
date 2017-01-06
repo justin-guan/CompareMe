@@ -1,5 +1,6 @@
 package compareMe.fx;
 
+import compareMe.ByteCompare;
 import compareMe.Comparator;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -16,14 +17,12 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.file.Files;
 
 public class CompareMeController {
     public Button selectDir;
     public TextField directory;
     public CheckBox recursive;
     public CheckBox secondCheck;
-    public CheckBox autoDelete;
     public ToggleGroup hashFunction;
     public VBox vbox;
 
@@ -44,30 +43,22 @@ public class CompareMeController {
                 vbox.setDisable(true);
                 Comparator comparator = new Comparator();
                 RadioButton hash = (RadioButton) hashFunction.getSelectedToggle();
-                return comparator.compare(directory.getText(), hash.getText(), recursive.isSelected());
+                ArrayList<ArrayList<File>> duplicates = comparator.compare(directory.getText(), hash.getText(), recursive.isSelected());
+                return (secondCheck.isSelected()) ? ByteCompare.secondCheck(duplicates) : duplicates;
             }
         };
 
-        new Thread(task).start();
+        Thread t = new Thread(task);
+        t.setDaemon(true); // Allows cancel by closing the application without creating zombie threads
+        t.start();
+
         task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent t) {
                 vbox.setDisable(false);
                 try {
                     ArrayList<ArrayList<File>> duplicates = task.getValue();
-                    if (autoDelete.isSelected() && duplicates.size() > 0) {
-                        for (ArrayList<File> listOfFiles : duplicates) {
-                            for (int i = 1; i < listOfFiles.size(); i++) {
-                                Files.delete(listOfFiles.get(i).toPath()); // Use package java.nio.file to delete due to better error checking
-                            }
-                        }
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Completed.fxml"));
-                        Parent root = fxmlLoader.load();
-                        Stage stage = new Stage();
-                        stage.setTitle("Compare Me - Completed");
-                        stage.setScene(new Scene(root, 300, 100));
-                        stage.show();
-                    } else if (duplicates.size() > 0) {
+                    if (duplicates.size() > 0) {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ManualDeleter.fxml"));
                         Parent root = fxmlLoader.load();
                         ManualDeleterController controller = fxmlLoader.<ManualDeleterController>getController();
@@ -86,7 +77,7 @@ public class CompareMeController {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                    throw new RuntimeException(e);
+                    throw new RuntimeException("Something went wrong: " + e.toString());
                 }
             }
         });
