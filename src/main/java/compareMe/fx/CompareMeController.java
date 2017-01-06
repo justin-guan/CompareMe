@@ -1,5 +1,6 @@
 package compareMe.fx;
 
+import compareMe.ByteCompare;
 import compareMe.Comparator;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -42,11 +43,15 @@ public class CompareMeController {
                 vbox.setDisable(true);
                 Comparator comparator = new Comparator();
                 RadioButton hash = (RadioButton) hashFunction.getSelectedToggle();
-                return comparator.compare(directory.getText(), hash.getText(), recursive.isSelected());
+                ArrayList<ArrayList<File>> duplicates = comparator.compare(directory.getText(), hash.getText(), recursive.isSelected());
+                return (secondCheck.isSelected()) ? ByteCompare.secondCheck(duplicates) : duplicates;
             }
         };
 
-        new Thread(task).start();
+        Thread t = new Thread(task);
+        t.setDaemon(true); // Allows cancel by closing the application without creating zombie threads
+        t.start();
+
         task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent t) {
