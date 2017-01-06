@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.file.Files;
 
 public class CompareMeController {
     public Button selectDir;
