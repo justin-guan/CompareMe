@@ -2,7 +2,7 @@
 CompareMe is an application that finds duplicate files in a specified directory. This is used to easily delete duplicate files. CompareMe is written in Java utilizing JavaFX. 
 
 ## Requirements
-CompareMe is powered by Java and written using JDK 1.8.0_111. JRE 8 or higher is required to run this application.
+CompareMe is powered by Java and written using Oracle JDK 1.8.0_111. JRE 8 or higher is required to run this application. This application may not work with OpenJDK due to the usage of JavaFX. Oracle JDK implements some JavaFX items that are not available in OpenJDK.
  
 ## Building CompareMe
  1. Import CompareMe as a project in IntelliJ.
