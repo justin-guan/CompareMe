@@ -23,7 +23,6 @@ public class CompareMeController {
     public TextField directory;
     public CheckBox recursive;
     public CheckBox secondCheck;
-    public CheckBox autoDelete;
     public ToggleGroup hashFunction;
     public VBox vbox;
 
