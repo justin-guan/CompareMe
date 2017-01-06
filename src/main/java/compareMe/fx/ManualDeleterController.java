@@ -67,7 +67,7 @@ public class ManualDeleterController {
         for (Path p : duplicates.getItems()) {
             if (p.isChecked()) {
                 try {
-                    Files.delete(Paths.get(p.getPath()));
+                    Files.deleteIfExists(Paths.get(p.getPath()));
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new RuntimeException("Something went wrong: " + e.toString());
@@ -142,6 +142,16 @@ public class ManualDeleterController {
         completed.setTitle("Compare Me - Completed");
         completed.setScene(new Scene(root, 300, 200));
         completed.show();
+    }
+
+    public void autoDelete(ActionEvent actionEvent) throws IOException {
+        for (ArrayList<File> listOfFiles : this.duplicatesList) {
+            for (int i = 1; i < listOfFiles.size(); i++) {
+                Files.deleteIfExists(listOfFiles.get(i).toPath()); // Use package java.nio.file to delete due to better error checking
+            }
+        }
+        duplicatesList.clear();
+        this.close();
     }
 
     public static class Path {
