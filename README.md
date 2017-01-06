@@ -18,3 +18,10 @@ CompareMe is powered by Java and written using Oracle JDK 1.8.0_111. JRE 8 or hi
  5. CompareMe will continue based on the options selected
     1. If Auto Delete is selected, then duplicates will automatically be deleted
     2. If Auto Delete is not selected, the manual deleter will show up. Simply check off and delete any files
+    
+## How CompareMe Works
+CompareMe generates a hash for each file in the given directory. Files with the same hash (hash collisions) will be marked as a duplicate. Duplicate hashes imply that there is a duplicate file. Stronger hash functions may take more time to compute, but will also decrease the chance of finding an incorrect/false collision.
+
+## CompareMe Options
+ * `Recursive` - Checks for all files in all sub-directories of the selected directory
+ * `Second Check` - Prevents false collisions by doing a second check over all the files using byte-by-byte comparisons.
