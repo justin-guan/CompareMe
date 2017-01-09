@@ -1,5 +1,5 @@
 # CompareMe
-CompareMe is an application that finds duplicate files in a specified directory. This is used to easily delete duplicate files. CompareMe is written in Java utilizing JavaFX. 
+CompareMe is an application that finds duplicate files in a specified directory. This is used to easily delete duplicate files. CompareMe is written in Java utilizing JavaFX. This application was originally created to find duplicate picture files in a directory, however the comparison method should work with all files.
 
 CompareMe generates a hash for each file in the given directory. Files with the same hash (hash collisions) will be marked as a duplicate. Duplicate hashes imply that there is a duplicate file. Stronger hash functions may take more time to compute, but will also decrease the chance of finding an incorrect/false collision. Using the Second Check option can also mitigate false collisions.
 
